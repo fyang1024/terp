@@ -19,6 +19,7 @@ and what trades and transfers need to be made to achieve that rate?
 ## Prepare dependencies
 
 * JDK 1.8 (JDK 1.9+ probably work, but not tested yet)
+* Gradle, see [Install Gradle](https://gradle.org/install/)
 
 ## Getting the code
 
