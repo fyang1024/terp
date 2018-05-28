@@ -184,11 +184,11 @@ public class ExchangeRateGraph {
         }
 
         ExchangeCurrency getNextCurrency(ExchangeCurrency srcCurrency, ExchangeCurrency destCurrency) {
-            return nextCurrencies.get(srcCurrency).get(destCurrency);
+            return nextCurrencies.get(srcCurrency) == null ? null : nextCurrencies.get(srcCurrency).get(destCurrency);
         }
 
         BigDecimal getBestRate(ExchangeCurrency srcCurrency, ExchangeCurrency destCurrency) {
-            return bestRates.get(srcCurrency).get(destCurrency);
+            return bestRates.get(srcCurrency) == null ? null : bestRates.get(srcCurrency).get(destCurrency);
         }
     }
 }
