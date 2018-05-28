@@ -1,0 +1,48 @@
+group 'tech.tenx'
+version '0.1.0'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.4'
+    }
+}
+
+apply plugin: 'java'
+sourceCompatibility = 1.8
+
+apply plugin: 'application'
+mainClassName = 'tech.tenx.terp.Console'
+
+apply plugin: 'com.github.johnrengelman.shadow'
+shadowJar {
+    baseName = 'tenx-terp'
+    classifier = null
+    version = null
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile ('org.slf4j:slf4j-api:1.7.25')
+    compile ('org.slf4j:jcl-over-slf4j:1.7.25')
+    compile ('ch.qos.logback:logback-classic:1.2.3')
+
+    testCompile ('org.apache.commons:commons-lang3:3.7')
+    testCompile ('org.junit.jupiter:junit-jupiter-api:5.2.0')
+    testRuntime ('org.junit.jupiter:junit-jupiter-engine:5.2.0')
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+    reports {
+        html.enabled = true
+    }
+}
