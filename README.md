@@ -58,7 +58,8 @@ cd build/libs
 java -jar tenx-terp.jar
 ```
 
-* In IntelliJ IDEA
+* In IntelliJ IDEA:
+
   1. After the building finishes, locate `Console` in the project structure view panel, which is on the path `terp/src/main/java/tech/tenx/terp/Console`.
   2. Select `Console`, right click on it, and select `Run 'Console.main()'`, then `Console` starts running.
 
