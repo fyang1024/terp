@@ -33,6 +33,7 @@ public class ExchangeRateGraph {
 
     private Set<ExchangeCurrency> existingCurrencies = new HashSet<>();
     private Map<ExchangeCurrency, Map<ExchangeCurrency, ExchangeRate>> rates = new HashMap<>();
+    private TempResult tempResult;
 
     public void addOrUpdateExchangeRate(ExchangeRate... exchangeRates) {
 
@@ -66,6 +67,8 @@ public class ExchangeRateGraph {
                 existingCurrencies.add(destCurrency);
             }
         }
+
+        tempResult = computeBestRates();
     }
 
     private void addSameCurrencyRates(ExchangeCurrency newCurrency) {
@@ -144,7 +147,6 @@ public class ExchangeRateGraph {
     }
 
     public BestRateResponse getBestRate(BestRateRequest request) {
-        TempResult tempResult = computeBestRates();
         ExchangeCurrency srcCurrency = request.getSrcCurrency();
         ExchangeCurrency destCurrency = request.getDestCurrency();
         List<ExchangeCurrency> steps = new ArrayList<>();
